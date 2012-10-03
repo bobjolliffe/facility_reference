@@ -7,17 +7,28 @@
   <xs:import namespace="http://resourcemap.instedd.org/api/1.0" schemaLocation="rm.xsd"/>
   <xs:import namespace="http://www.w3.org/2003/01/geo/wgs84_pos#" schemaLocation="geo.xsd"/>
 
+<!-- 
+
+  This schema defines the representation of a health facility
+  
+-->
   <xs:element name="facility">
     <xs:complexType>
       <xs:sequence>
+        <!-- the following are mandatory elements -->
         <xs:element ref="fac:name"/>
         <xs:element ref="fac:url"/>
         <xs:element ref="fac:identities"/>
         <xs:element ref="fac:status"/>
         <xs:element ref="geo:lat"/>
         <xs:element ref="geo:long"/>
+        
+        <!-- the following are optional elements -->
+        <xs:element ref="fac:approvalDate"/>
+        <xs:element ref="fac:link" minOccurs="0" maxOccurs="unbounded"/>
+        
+        <!-- any other elements may appear here so long as they are in their own namespace -->
         <xs:sequence minOccurs="0">
-          <xs:element ref="fac:approvalDate"/>
           <xs:any namespace="##other"/>
         </xs:sequence>
       </xs:sequence>
@@ -27,6 +38,7 @@
   <xs:element name="name" type="xs:NCName"/>
   <xs:element name="url" type="xs:anyURI"/>
 
+  <!-- a facility registry should be able to broker between different identifiers -->
   <xs:element name="identities">
     <xs:complexType>
       <xs:sequence>
@@ -37,6 +49,8 @@
   </xs:element>
   <xs:element name="guid" type="xs:anyURI"/>
   
+  <!-- an identifier may have any number of additional attributes, eg to model an hl7 identifier -->
+  <!-- context and id are mandatory -->
   <xs:element name="identity">
     <xs:complexType>
       <xs:attribute name="agency" use="optional" type="xs:NCName"/>
@@ -45,6 +59,18 @@
       <xs:anyAttribute />
     </xs:complexType>
   </xs:element>
+  
   <xs:element name="status" type="xs:NCName"/>
-  <xs:element name="approvalDate" type="xs:integer"/>
+  
+  <xs:element name="approvalDate" type="xs:date"/>
+  
+  <!-- link provides a way associate external resources to this facility, eg those which might be in other registries -->
+  <!-- links are optional and any number of links are allowed -->
+  <xs:element name="link">
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="url" use="required" type="xs:anyURI"/>
+      <xs:anyAttribute />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
