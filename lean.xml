@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facility xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http:www.openfacility.org/v1.0 facility.xsd"
+ xmlns="http:www.openfacility.org/v1.0"
+ xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+  
+  <name>Birembo</name>
+  <url>http://facilities.moh.gov.rw/api/sites/50181.rss</url>
+  <identities >
+    <guid>http://facilities.moh.gov.rw/api/sites/50181.rss</guid>
+    <identity agency="MOH" context="FOSA" id="208" />
+  </identities>
+  <status>open</status>
+  
+  <geo:lat>-1.69172</geo:lat>
+  <geo:long>29.52505</geo:long>
+
+</facility>

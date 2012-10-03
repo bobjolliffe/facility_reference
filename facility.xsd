@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+  targetNamespace="http:www.openfacility.org/v1.0" xmlns:fac="http:www.openfacility.org/v1.0"
+  xmlns:rm="http://resourcemap.instedd.org/api/1.0"
+  xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+
+  <xs:import namespace="http://resourcemap.instedd.org/api/1.0" schemaLocation="rm.xsd"/>
+  <xs:import namespace="http://www.w3.org/2003/01/geo/wgs84_pos#" schemaLocation="geo.xsd"/>
+
+  <xs:element name="facility">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="fac:name"/>
+        <xs:element ref="fac:url"/>
+        <xs:element ref="fac:identities"/>
+        <xs:element ref="fac:status"/>
+        <xs:element ref="geo:lat"/>
+        <xs:element ref="geo:long"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="fac:approvalDate"/>
+          <xs:any namespace="##other"/>
+        </xs:sequence>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="name" type="xs:NCName"/>
+  <xs:element name="url" type="xs:anyURI"/>
+
+  <xs:element name="identities">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="fac:guid"/>
+        <xs:element maxOccurs="unbounded" ref="fac:identity"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="guid" type="xs:anyURI"/>
+  
+  <xs:element name="identity">
+    <xs:complexType>
+      <xs:attribute name="agency" use="optional" type="xs:NCName"/>
+      <xs:attribute name="context" use="required" type="xs:NCName"/>
+      <xs:attribute name="id" use="required" type="xs:NMTOKEN"/>
+      <xs:anyAttribute />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="status" type="xs:NCName"/>
+  <xs:element name="approvalDate" type="xs:integer"/>
+</xs:schema>
