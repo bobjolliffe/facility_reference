@@ -10,7 +10,8 @@
 <!-- 
 
   This schema defines the representation of a health facility
-  
+  It is deliberately permissive, providing a minimal framework of
+  mandatory elements and flexible opportunity for extension.
 -->
   <xs:element name="facility">
     <xs:complexType>
@@ -27,10 +28,16 @@
         <xs:element ref="fac:approvalDate"/>
         <xs:element ref="fac:link" minOccurs="0" maxOccurs="unbounded"/>
         
-        <!-- any other elements may appear here so long as they are in their own namespace -->
+        <!-- 
+          Any other elements may appear here so long as they are in their own namespace. 
+          Conforming producers can use this to provide additional reference metadata about
+          the facility which might be peculiar to the producer application.
+          Conforming consumers may ignore this.
+        -->
         <xs:sequence minOccurs="0">
           <xs:any namespace="##other"/>
         </xs:sequence>
+        
       </xs:sequence>
     </xs:complexType>
   </xs:element>
