@@ -4,7 +4,7 @@
  xmlns="http:www.openfacility.org/v1.0"
  xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
   
-  <name>Birembo</name>
+  <name>Birembo</name> 
   <url>http://facilities.moh.gov.rw/api/sites/50181.rss</url>
   <identities >
     <guid>http://facilities.moh.gov.rw/api/sites/50181.rss</guid>
