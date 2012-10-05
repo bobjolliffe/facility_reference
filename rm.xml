@@ -16,7 +16,7 @@
     <identity agency="MOH" context="HR" id="567" /> <!-- optional -->
     <identity agency="MOH" context="FOSA" id="208" /> <!-- optional -->
   </identities>
-  <status>open</status>
+  <active>true</active>
   
   <geo:lat>-1.69172</geo:lat> <!-- mandatory -->
   <geo:long>29.52505</geo:long> <!-- mandatory -->

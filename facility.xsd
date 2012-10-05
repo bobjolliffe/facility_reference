@@ -20,12 +20,12 @@
         <xs:element ref="fac:name"/>
         <xs:element ref="fac:url"/>
         <xs:element ref="fac:identities"/>
-        <xs:element ref="fac:status"/>
+        <xs:element ref="fac:active"/>
         <xs:element ref="geo:lat"/>
         <xs:element ref="geo:long"/>
         
         <!-- the following are optional elements -->
-        <xs:element ref="fac:approvalDate"/>
+        <xs:element ref="fac:approvalDate" minOccurs="0"/>
         <xs:element ref="fac:link" minOccurs="0" maxOccurs="unbounded"/>
         
         <!-- 
@@ -67,7 +67,7 @@
     </xs:complexType>
   </xs:element>
   
-  <xs:element name="status" type="xs:NCName"/>
+  <xs:element name="active" type="xs:boolean"/>
   
   <xs:element name="approvalDate" type="xs:date"/>
   
