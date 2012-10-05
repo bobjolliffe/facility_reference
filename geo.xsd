@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:v1.0="http:www.openfacility.org/v1.0" xmlns:rm="http://resourcemap.instedd.org/api/1.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
-  <xs:import namespace="http://resourcemap.instedd.org/api/1.0" schemaLocation="rm.xsd"/>
-  <xs:import namespace="http:www.openfacility.org/v1.0" schemaLocation="facility.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+  targetNamespace="http://www.w3.org/2003/01/geo/wgs84_pos#"
+  xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+  <xs:annotation>
+    <xs:documentation>This is NOT the normative schema, simply a local convenience to validate
+      lat/long in http://www.w3.org/2003/01/geo/wgs84_pos# namespace</xs:documentation>
+  </xs:annotation>
   <xs:element name="lat" type="xs:decimal"/>
   <xs:element name="long" type="xs:decimal"/>
 </xs:schema>

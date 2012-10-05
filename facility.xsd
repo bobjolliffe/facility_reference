@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
   targetNamespace="http:www.openfacility.org/v1.0" xmlns:fac="http:www.openfacility.org/v1.0"
-  xmlns:rm="http://resourcemap.instedd.org/api/1.0"
   xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
 
   <xs:import namespace="http://www.w3.org/2003/01/geo/wgs84_pos#" schemaLocation="geo.xsd"/>
 
-<!-- 
+  <xs:annotation>
+    <xs:documentation>This schema defines the representation of a health facility It is
+      deliberately permissive, providing a minimal framework of mandatory elements and flexible
+      opportunity for extension.</xs:documentation>
+  </xs:annotation>
 
-  This schema defines the representation of a health facility
-  It is deliberately permissive, providing a minimal framework of
-  mandatory elements and flexible opportunity for extension.
--->
   <xs:element name="facility">
     <xs:complexType>
       <xs:sequence>
@@ -22,21 +21,23 @@
         <xs:element ref="fac:active"/>
         <xs:element ref="geo:lat"/>
         <xs:element ref="geo:long"/>
-        
+
         <!-- the following are optional elements -->
         <xs:element ref="fac:approvalDate" minOccurs="0"/>
         <xs:element ref="fac:link" minOccurs="0" maxOccurs="unbounded"/>
-        
+
         <!-- 
-          Any other elements may appear here so long as they are in their own namespace. 
-          Conforming producers can use this to provide additional reference metadata about
-          the facility which might be peculiar to the producer application.
-          Conforming consumers may ignore this.
         -->
         <xs:sequence minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Any other elements may appear here so long as they are in their own
+              namespace. Conforming producers can use this to provide additional reference metadata
+              about the facility which might be peculiar to the producer application. Conforming
+              consumers may ignore this.</xs:documentation>
+          </xs:annotation>
           <xs:any namespace="##other" processContents="lax"/>
         </xs:sequence>
-        
+
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -54,7 +55,7 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="guid" type="xs:anyURI"/>
-  
+
   <!-- an identifier may have any number of additional attributes, eg to model an hl7 identifier -->
   <!-- context and id are mandatory -->
   <xs:element name="identity">
@@ -62,21 +63,21 @@
       <xs:attribute name="agency" use="optional" type="xs:NCName"/>
       <xs:attribute name="context" use="required" type="xs:NCName"/>
       <xs:attribute name="id" use="required" type="xs:NMTOKEN"/>
-      <xs:anyAttribute />
+      <xs:anyAttribute/>
     </xs:complexType>
   </xs:element>
-  
+
   <xs:element name="active" type="xs:boolean"/>
-  
+
   <xs:element name="approvalDate" type="xs:date"/>
-  
+
   <!-- link provides a way associate external resources to this facility, eg those which might be in other registries -->
   <!-- links are optional and any number of links are allowed -->
   <xs:element name="link">
     <xs:complexType>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
       <xs:attribute name="url" use="required" type="xs:anyURI"/>
-      <xs:anyAttribute />
+      <xs:anyAttribute/>
     </xs:complexType>
   </xs:element>
 </xs:schema>
