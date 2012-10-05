@@ -4,7 +4,6 @@
   xmlns:rm="http://resourcemap.instedd.org/api/1.0"
   xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
 
-  <xs:import namespace="http://resourcemap.instedd.org/api/1.0" schemaLocation="rm.xsd"/>
   <xs:import namespace="http://www.w3.org/2003/01/geo/wgs84_pos#" schemaLocation="geo.xsd"/>
 
 <!-- 
@@ -35,7 +34,7 @@
           Conforming consumers may ignore this.
         -->
         <xs:sequence minOccurs="0">
-          <xs:any namespace="##other"/>
+          <xs:any namespace="##other" processContents="lax"/>
         </xs:sequence>
         
       </xs:sequence>
